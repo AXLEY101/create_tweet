@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//テスト
+use App\Http\Controllers\WelcomeController;
+
+use App\Http\Controllers\tweet\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/sample/{id}',[IndexController::class, 'showId']);
+
+
+//テスト用
+Route::get('/',[WelcomeController::class, 'welcome']);
