@@ -6,13 +6,28 @@
         <title>つぶやいたー</title>
     </head>
     <body>
+        @if($errors->any())
+        <div>
+            @foreach($errors->all() as $error)
+                {{ $error }}<br>
+            @endforeach
+        </div>
+        @endif
+        
         <h1>つぶやいたー</h1>
         <div>
+            <p>投稿フォーム</p>
+            <form action="/tweet/create" method="post">
+                @csrf
+                <label for="tweet-content">つぶやき</label>
+                    <span>１４０文字まで</span><br>
+                    <textarea id="tweet-content" type="text" name="tweet" placeholder="つぶやきを入力"></textarea><br>
+                <button type="submit">投稿</button>
+            </form>
+        </div>
+        <div>
             @foreach($tweets as $tweet)
-                <p>{{ $tweet->id }}</p>
                 <p>{{ $tweet->content }}</p>
-                <p>{{ $tweet->created_at }}</p>
-                <p>{{ $tweet->updated_at }}</p>
             @endforeach
         </div>
     </body>

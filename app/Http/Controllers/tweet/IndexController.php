@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     
     
-    public function showId($id){
+    public function showId(){
         // return view('tweet.index',['name' => 'ユーザーねーむ']);
         // return view('tweet.index')->with('name','ユーザーねーむ');//こっちでも同じように呼べ
         
@@ -19,7 +19,7 @@ class IndexController extends Controller
         //                 ->with('name', 'ユーザーねーむ');
         //                 ->with('age', '30');
         
-        $tweets = Tweet::all();
+        $tweets = Tweet::orderBy('created_at','DESC')->get();
         
         return view('tweet.index',['tweets' => $tweets]);
     }

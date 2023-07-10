@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 
 use App\Http\Controllers\tweet\IndexController;
+use App\Http\Controllers\tweet\CreateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,8 @@ use App\Http\Controllers\tweet\IndexController;
 |
 */
 
-Route::get('/sample/{id}',[IndexController::class, 'showId']);
+Route::get('/tweet',[IndexController::class, 'showId'])->name('tweet.index');
+Route::post('/tweet/create',[CreateController::class, 'tweet_create'])->name('tweet.create');
 
 
 //テスト用
