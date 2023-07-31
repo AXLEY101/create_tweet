@@ -6,6 +6,8 @@ use App\Http\Controllers\WelcomeController;
 
 use App\Http\Controllers\tweet\IndexController;
 use App\Http\Controllers\tweet\CreateController;
+use App\Http\Controllers\tweet\Update\UpdateIndexController;
+use App\Http\Controllers\tweet\Update\PutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,8 @@ use App\Http\Controllers\tweet\CreateController;
 
 Route::get('/tweet',[IndexController::class, 'showId'])->name('tweet.index');
 Route::post('/tweet/create',[CreateController::class, 'tweet_create'])->name('tweet.create');
+Route::get('/tweet/update/{tweetId}', [UpdateIndexController::class, 'tweet_update_index'])->name('tweet.update.index')->where('tweetId','[0-9]+');//URLパラメータルールとして整数のみ許可
+Route::put('/tweet/update/{tweetId}', [PutController::class, 'tweet_update_put'])->name('tweet.update.put')->where('tweetId','[0-9]+');
 
 
 //テスト用
