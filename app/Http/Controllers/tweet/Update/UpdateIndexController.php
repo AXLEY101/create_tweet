@@ -18,8 +18,8 @@ class UpdateIndexController extends Controller
         //     throw new NotFoundHttpException('存在しないつぶやきです');
         //}
         $tweet = Tweet::where('id', $tweetId)->firstOrFail();
+        return view('tweet.update')->with('tweet',$tweet);
         
-        dd($tweet);
     }
     
 }
