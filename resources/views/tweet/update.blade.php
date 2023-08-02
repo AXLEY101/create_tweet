@@ -32,6 +32,11 @@
                     @enderror
                 <button type="submit">編集</button>
             </form>
+            <form action="{{ route('tweet.delete', ['tweetId' => $tweet->id]) }}" method="post">
+                @method('DELETE')
+                @csrf
+                <button type="submit">削除</button>
+            </form>
         </div>
         
     </body>

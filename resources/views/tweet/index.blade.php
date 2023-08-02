@@ -14,7 +14,11 @@
         </div>
         @endif
         
+        
         <h1>つぶやいたー</h1>
+        @if(session('feedback.success'))
+            <p style="color: green">{{ session('feedback.success') }}</p>
+        @endif
         <div>
             <p>投稿フォーム</p>
             <form action="/tweet/create" method="post">
