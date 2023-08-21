@@ -14,7 +14,7 @@ class IndexController extends Controller
     
     public function showId(Request $request, TweetService $tweetService){
         // return view('tweet.index',['name' => 'ユーザーねーむ']);
-        // return view('tweet.index')->with('name','ユーザーねーむ');//こっちでも同じように呼べ
+        // return view('tweet.index')->with('name','ユーザーねーむ');//こっちでも同じように呼べるし
         
         //チェーンメソッドで複数もいける。
         // return view('tweet.index')
