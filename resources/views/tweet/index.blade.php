@@ -19,23 +19,29 @@
         @if(session('feedback.success'))
             <p style="color: green">{{ session('feedback.success') }}</p>
         @endif
-        <div>
-            <p>投稿フォーム</p>
-            <form action="/tweet/create" method="post">
-                @csrf
-                <label for="tweet-content">つぶやき</label>
-                    <span>１４０文字まで</span><br>
-                    <textarea id="tweet-content" type="text" name="tweet" placeholder="つぶやきを入力"></textarea><br>
-                <button type="submit">投稿</button>
-            </form>
-        </div>
+        @auth
+            <div>
+                <p>投稿フォーム</p>
+                <form action="/tweet/create" method="post">
+                    @csrf
+                    <label for="tweet-content">つぶやき</label>
+                        <span>１４０文字まで</span><br>
+                        <textarea id="tweet-content" type="text" name="tweet" placeholder="つぶやきを入力"></textarea><br>
+                    <button type="submit">投稿</button>
+                </form>
+            </div>
+        @endauth
         <div>
         @foreach($tweets as $tweet)
             <details>
-                <summary>{{ $tweet->content }}</summary>
+                <summary>{{ $tweet->content }} by {{ $tweet->user->name }}</summary>
+                @if(\Illuminate\Support\Facades\Auth::id() === $tweet->user_id)
                 <div>
                     <a href="{{ route('tweet.update.index', ['tweetId' => $tweet->id]) }}">編集</a>
                 </div>
+                @else
+                    編集できません。
+                @endif
             </details>
         @endforeach   
         </div>

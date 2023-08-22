@@ -16,6 +16,8 @@ class CreateController extends Controller
         
         // ModelのTweetクラスで新しいインスタンス作成し
         $tweet = new Tweet;
+        // Requestクラスに書いたuserId()を走らせ、今のユーザIDを保存
+        $tweet->user_id = $request->userId();
         // contentにフォームリクエストで書いたtweet()で返された内容を入れ
         $tweet->content = $request->tweet();
         // Modelで使用できるsave()で内容を書き込み

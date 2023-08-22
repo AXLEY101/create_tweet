@@ -18,6 +18,7 @@ class TweetFactory extends Factory
     {
         return [
             //
+            'user_id' => 1, // ファクトリーで作成したテキストは、ユーザーIDを持っていないので、ファクトリー作成時ユーザーのIDを１とする。
             'content' => $this->faker->realText(100)
         ];
     }

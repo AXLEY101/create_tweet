@@ -26,4 +26,10 @@ class Tweet extends Model
     // const CREATED_AT = 'creation_data';
     // const UPDATED_AT = 'updated_data';
     
+    public function user(){
+        //Userモデルへの関連付け
+        //このメソッドは、TweetモデルがUserモデルに属していることを示す。belongsToメソッドは「多対1」のリレーションを定義するためのもの。
+        return $this->belongsTo(User::class);
+    }
+    
 }

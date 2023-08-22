@@ -35,4 +35,9 @@ class CreateRequest extends FormRequest
         return $this->input('tweet');
     }
     
+    //Requestクラスのuser関数で今自分がログインしているユーザーが取得できる。
+    public function userId(): int{
+        return $this->user()->id;
+    }
+    
 }
