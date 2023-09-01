@@ -10,24 +10,14 @@
             </div>
             @endif
             
-            
+            <!-- layoutでsingle.blade.php作ったものの、このままのほうが汎用性高いため、このまま記載 -->
             
             <h1>つぶやいたー</h1>
             @if(session('feedback.success'))
                 <p style="color: green">{{ session('feedback.success') }}</p>
             @endif
-            @auth
-                <div>
-                    <p>投稿フォーム</p>
-                    <form action="/tweet/create" method="post">
-                        @csrf
-                        <label for="tweet-content">つぶやき</label>
-                            <span>１４０文字まで</span><br>
-                            <textarea id="tweet-content" type="text" name="tweet" placeholder="つぶやきを入力"></textarea><br>
-                        <button type="submit">投稿</button>
-                    </form>
-                </div>
-            @endauth
+            <!-- レイアウトコンポーネントのtweet.form.postに auth  endauth　でログイン時記載処理いれてるので変更時はそちらを参照-->
+            <x-tweet.form.post></x-tweet.form.post>
             <div>
             @foreach($tweets as $tweet)
                 <details>
