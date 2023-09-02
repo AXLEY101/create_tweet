@@ -42,7 +42,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
-        return redirect('/');
+        
+        // ログアウト後に/tweetにリダイレクトに変更
+        return redirect('/tweet');
     }
 }

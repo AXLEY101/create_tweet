@@ -11,12 +11,25 @@
             @endif
             
             <!-- layoutでsingle.blade.php作ったものの、このままのほうが汎用性高いため、このまま記載 -->
+            @auth
+            <form method="post" action="{{ route('logout') }}">
+                @csrf
+                <div class="flex justify-end p-4">
+                    <button class="mt-2 text-sm text-gray-500 hover:text-gray-800" onclick="event.preventDefault(); this.closest('form').submit();">
+                        ログアウト
+                    </button>
+                </div>
+                
+            </form>
+        
+            @endauth
+            
             
             <h1>つぶやいたー</h1>
             @if(session('feedback.success'))
                 <p style="color: green">{{ session('feedback.success') }}</p>
             @endif
-            <!-- レイアウトコンポーネントのtweet.form.postに auth  endauth　でログイン時記載処理いれてるので変更時はそちらを参照-->
+            <!-- レイアウトとしてコンポーネントのtweet.form.postに auth  endauth　でログイン時記載処理いれてるので変更時はそちらを参照-->
             <x-tweet.form.post></x-tweet.form.post>
             <div>
             @foreach($tweets as $tweet)

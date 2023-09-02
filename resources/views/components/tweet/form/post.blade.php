@@ -22,3 +22,18 @@
 </div>
 
 @endauth
+<!-- これで、未ログイン時は登録ボタンとログインボタン表示される authログイン　guest未ログインとして挙動を管理してる -->
+@guest
+<div class="flex flex-wrap justify-center">
+    <div class="w-1/2 p-4 flex flex-wrap justify-evenly">
+        <x-element.button-a :href="route('login')">ログイン</x-element.button-a>
+        <x-element.button-a :href="route('register')">会員登録</x-element.button-a>
+        
+        
+    </div>
+    
+    
+</div>
+
+
+@endguest
